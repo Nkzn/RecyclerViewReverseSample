@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="peopleListViewModel"
+            type="jp.agri_note.recyclerviewreversesample.PeopleListViewModel" />
+    </data>
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="jp.agri_note.recyclerviewreversesample.MainActivity">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_buttons"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:reverseLayout="true"
+            app:adapter="@{peopleListViewModel.adapter}"/>
+
+        <LinearLayout
+            android:id="@+id/ll_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_add_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Add Male"
+                app:onClickListener="@{(v) -> peopleListViewModel.onMaleClick()}" />
+            <Button
+                android:id="@+id/btn_add_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Add Female"
+                app:onClickListener="@{(v) -> peopleListViewModel.onFemaleClick()}" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
